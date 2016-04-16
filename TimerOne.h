@@ -173,11 +173,11 @@ class TimerOne
     //****************************
     //  Configuration
     //****************************
-    void initialize(unsigned long microseconds=1000000) __attribute__((always_inline)) {
+    void initialize(unsigned long float microseconds=1000000) __attribute__((always_inline)) {
 	setPeriod(microseconds);
     }
-    void setPeriod(unsigned long microseconds) __attribute__((always_inline)) {
-	const unsigned long cycles = (F_TIMER / 2000000) * microseconds;
+    void setPeriod(unsigned long float microseconds) __attribute__((always_inline)) {
+	const unsigned long cycles =(const unsigned long) (float(F_TIMER) / 2000000.0) * microseconds;
 	if (cycles < TIMER1_RESOLUTION) {
 		clockSelectBits = 0;
 		pwmPeriod = cycles;
